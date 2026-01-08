@@ -1,3 +1,4 @@
+
 #root {
   margin: 16px;
 }
@@ -13,4 +14,9 @@ li {
   padding: 8px;
   border: whitesmoke 3px solid;
   border-radius: 8px;
+}
+
+.alert {
+  color: red;
+  font-weight: bold;
 }
