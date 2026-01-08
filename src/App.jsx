@@ -4,16 +4,16 @@ import './App.css';
 
 const App = () => {
 
-  // Create a new state variable named team and set the initial state to an empty array [].
+  // Create a new state variable named team and set the initial state to an empty array []
   const [team, setTeam] = useState([]);
 
-  // Create a new state variable named money and set the initial state to 100.
+  // Create a new state variable named money and set the initial state to 100
   const [money, setMoney] = useState(100);
 
-  // Create a new state variable displays in the browser when there isn’t enough budget to add a team member
+  // Create a new state variable to display a message in the browser when there isn’t enough budget to add a team member
   const [budgetMessage, setBudgetMessage] = useState('');
 
-  // Create a new state variable named zombieFighters and set the initial state to an awway of objects
+  // Create a new state variable named zombieFighters and set the initial state to an array of objects
   const [zombieFighters, setZombieFighters] = useState(
     [
       {
@@ -22,7 +22,7 @@ const App = () => {
         price: 12,
         strength: 6,
         agility: 4,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/0c2d6b.png',
+        img: 'src/assets/images/survivor.png',
       },
       {
         id: 2,
@@ -30,7 +30,7 @@ const App = () => {
         price: 10,
         strength: 5,
         agility: 5,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/033a16.png',
+        img: 'src/assets/images/scavenger.png',
       },
       {
         id: 3,
@@ -38,7 +38,7 @@ const App = () => {
         price: 18,
         strength: 7,
         agility: 8,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/262c36.png',
+        img: 'src/assets/images/shadow.png',
       },
       {
         id: 4,
@@ -46,7 +46,7 @@ const App = () => {
         price: 14,
         strength: 7,
         agility: 6,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/3c1e70.png',
+        img: 'src/assets/images/tracker.png',
       },
       {
         id: 5,
@@ -54,7 +54,7 @@ const App = () => {
         price: 20,
         strength: 6,
         agility: 8,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/4b2900.png',
+        img: 'src/assets/images/sharpshooter.png',
       },
       {
         id: 6,
@@ -62,7 +62,7 @@ const App = () => {
         price: 15,
         strength: 5,
         agility: 7,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/5a1e02.png',
+        img: 'src/assets/images/medic.png',
       },
       {
         id: 7,
@@ -70,7 +70,7 @@ const App = () => {
         price: 16,
         strength: 6,
         agility: 5,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/5e103e.png',
+        img: 'src/assets/images/engineer.png',
       },
       {
         id: 8,
@@ -78,7 +78,7 @@ const App = () => {
         price: 11,
         strength: 8,
         agility: 3,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/67060c.png',
+        img: 'src/assets/images/brawler.png',
       },
       {
         id: 9,
@@ -86,7 +86,7 @@ const App = () => {
         price: 17,
         strength: 5,
         agility: 9,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/ac3220.png',
+        img: 'src/assets/images/infiltrator.png',
       },
       {
         id: 10,
@@ -94,7 +94,7 @@ const App = () => {
         price: 22,
         strength: 7,
         agility: 6,
-        img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/e41f26.png',
+        img: 'src/assets/images/leader.png',
       },
     ]
   );
@@ -113,7 +113,7 @@ const App = () => {
   const handleAddFighter = (fighter) => {
     // If there's not enough money to add a fighter, log a message to the console and exit the function
     if (money < fighter.price) {
-      setBudgetMessage("Not enough money to add a Zombie Fighter to your team!");  
+      setBudgetMessage("Not enough money to add a Zombie Fighter to your team!");  // Set additional message to display in the browser
       console.log("Not enough money!");
       return;
     }
@@ -130,14 +130,14 @@ const App = () => {
 
   // Create a function to be triggered when you click the Remove button for any character in your team
   const handleRemoveFighter = (fighter) => {
-    // Add the selected character’s object to the existing ZombieFighter state array 
+    // Send back the selected character’s object to the existing ZombieFighter state array 
     setZombieFighters([...zombieFighters, fighter]);
     // Remove the character from the team state so they can’t be removed again
     // Do that by filtering out the selected fighter id
     setTeam(filterbyId(team, fighter.id));
-    // Upon adding a character to your team, add the character’s price to your current money value
+    // Upon removing a character to your team, add the character’s price back to your current money value
     setMoney(money + fighter.price);
-    // Clear alert message
+    // Clear alert message, if any
     setBudgetMessage('');
   }
 
