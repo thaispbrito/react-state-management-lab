@@ -121,8 +121,7 @@ const App = () => {
     setBudgetMessage(''); 
     // Add the selected character’s object to the existing team state array 
     setTeam([...team, fighter]);
-    // Remove the character from the zombieFighters state so they can’t be added again
-    // Do that by filtering out the selected fighter id
+    // Remove the character from the zombieFighters state (so they can’t be added again) by filtering out the selected fighter id
     setZombieFighters(filterbyId(zombieFighters, fighter.id));
     // Upon adding a character to your team, subtract the character’s price from your current money value
     setMoney(money - fighter.price);
@@ -132,8 +131,7 @@ const App = () => {
   const handleRemoveFighter = (fighter) => {
     // Send back the selected character’s object to the existing ZombieFighter state array 
     setZombieFighters([...zombieFighters, fighter]);
-    // Remove the character from the team state so they can’t be removed again
-    // Do that by filtering out the selected fighter id
+    // Remove the character from the team state by filtering out the selected fighter id
     setTeam(filterbyId(team, fighter.id));
     // Upon removing a character to your team, add the character’s price back to your current money value
     setMoney(money + fighter.price);
@@ -158,7 +156,7 @@ const App = () => {
               <p>Price: ${teamFighter.price}</p>
               <p>Strength: {teamFighter.strength}</p>
               <p>Agility: {teamFighter.agility}</p>
-              <button onClick={() => { handleRemoveFighter(teamFighter) }}>Remove</button>
+              <button onClick = {() => handleRemoveFighter(teamFighter)}>Remove</button>
             </li>
           ))}
         </ul>
@@ -172,7 +170,7 @@ const App = () => {
             <p>Price: ${zombieFighter.price}</p>
             <p>Strength: {zombieFighter.strength}</p>
             <p>Agility: {zombieFighter.agility}</p>
-            <button onClick={() => handleAddFighter(zombieFighter)}>Add</button>
+            <button onClick = {() => handleAddFighter(zombieFighter)}>Add</button>
           </li>
         ))}
       </ul>
